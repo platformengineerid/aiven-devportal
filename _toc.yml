@@ -77,6 +77,8 @@ entries:
           - file: docs/platform/howto/access-service-logs
           - file: docs/platform/howto/prepare-for-high-load
           - file: docs/platform/howto/create-service-integration
+          - file: docs/platform/howto/enable-backup-to-another-region
+            title: Add backup to another region
       - file: docs/platform/howto/list-network
         title: Network management
         entries:
