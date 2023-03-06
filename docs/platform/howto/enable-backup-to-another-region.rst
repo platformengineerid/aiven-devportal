@@ -155,14 +155,13 @@ Use the `ServiceUpdate <https://api.aiven.io/doc/#tag/Service/operation/ServiceU
         }'
 
 ..
+    What's next
+    -----------
 
-  What's next
-  -----------
+    * :doc:`Manage BTAR for your Aiven service </docs/platform/howto/howto/manage-backup-to-another-region>`
+    * :doc:`Disable BTAR for your Aiven service </docs/platform/howto/howto/disable-backup-to-another-region>`
 
-  * :doc:`Manage BTAR for your Aiven service </docs/platform/howto/howto/manage-backup-to-another-region>`
-  * :doc:`Disable BTAR for your Aiven service </docs/platform/howto/howto/disable-backup-to-another-region>`
+    Related reading
+    ---------------
 
-  Related reading
-  ---------------
-
-  * :doc:`About the backup to another region feature in Aiven </docs/platfrom/concepts/backup-to-another-region>`
+    * :doc:`About the backup to another region feature in Aiven </docs/platfrom/concepts/backup-to-another-region>`
