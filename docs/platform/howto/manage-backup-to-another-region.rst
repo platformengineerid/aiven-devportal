@@ -1,59 +1,86 @@
 Manage a backup to another region |beta|
 ========================================
 
-Learn how to work with an Aiven service that has a backup in another region. This article details how to monitor such a service for its status, replication lag, and more. Check out how forking and restoring BTAR services is different from forking and restoring services with primary backups only. Finally, find out how to migrate a service with BTAR enabled.
+The backup to another region (BTAR) feature allows you to create a service backup outside the serivce-hosting region. This article describes how to work with an Aiven service that has a backup in another region. Learn how to monitor such a service for its status, replication lag, and more. Check out how forking and restoring BTAR services is different from forking and restoring services with primary backups only. Finally, find out how to migrate a service with BTAR enabled.
 
 Prerequisites
 -------------
 
 You have at least one Aiven service with BTAR enabled.
 
-Monitor BTAR
-------------
+Monitor a service with BTAR
+---------------------------
 
-..
-    Indicator to monitor: replication lag (e.g. WAL files), status - enabled/diabled, + which region is the target 
+There are a few things you may want to check for your Aiven service in the context for BTAR:
 
-    Once a region is defined, the backup data is transferred on an ongoing basis, the lag between the primary and secondary region can be queried via the following endpoint.
+* Does your service has a backup in another region created?
+* What is the status of the secondary backup?
+* What is the target region of the secondary backup?
+* What is the replication lag between the primary region and the secondary region?
 
-    Backup to prim
-    Copy prim backup to sec region
+Use the console
+'''''''''''''''
 
-    if the transfer is fast enough it could also just return zero meaning 'no lag'
+To check out the availability, the status, and the target region of a secondary (BTAR) backup in the `Aiven console <https://console.aiven.io/>`_, navigate to your service's homepage and access the following:
 
-    API call
+* **Overview** tab > **Advanced configuration** section > ``additional_backup_regions`` parameter
+* **Backups** tab > **Database backups** > **Primary backup location** and **Secondary backup location**
 
-      curl --request POST \
-    --url https://api.aiven.io/v1/project/dev-sandbox/service/mysql-star-api-test/backup_to_another_region/report \
-    --header 'Authorization: Bearer 0PKPik8HZDuR+LJ8ZyGdIdS79yF0Tzq5SGwfF5OAfqLn8n1ab9mrfhf8SqZaOS6xqp2/cLYT3HOoj86FCjQUecaiK8Vf5n/G2pwYlnBatRkl17FjRFg7AmZKvVgqQR4H6T6tb1lRb4Bm72ep+9WJzfet9nZbK9sD+/D1zFw4fbyFWxVNaemMAcumP5eOh8JfSafuTmVO0LHSvVcJCt6WVliIcQZ6tBLVB6EOPlA05kK5f24fQmDTvtYZYObXQzbosnpNln2qM9GbtkKs5JQOD7Sv9VP7sHLzWvvbCxN5+mdW+aYiI+vr3Vh31xqxs0ct6HwHyo65xbiKEs8UzfSUAPhwMI/6uM1afqvjwlYyjlYAfBMRQQ==' \
-    --header 'content-type: application/json' \
-    --data '{"period":"hour"}'
+Use API
+'''''''
 
-    As an output, you get metrics for replication lags at speficis points in time.
+To check out the target region and the replication lag for a secondary (BTAR) backup of your service, call the `ServiceBackupToAnotherRegionReport <https://api.aiven.io/doc/#tag/Service/operation/ServiceBackupToAnotherRegionReport>`_ endpoint.
 
-    Fork and restore
-    ----------------
+Configure the call as follows:
 
-    Recovery from an additional location > Fork and restore
+1. Enter YOUR-PROJECT-NAME and YOUR-SERVICE-NAME into the URL.
+2. Specify DESIRED-TIME-PERIOD depending on the time period you need the mertrics for: select one of the following values for the ``period`` key: ``hour``, ``day``, ``week``, ``month``, or ``year``.
 
-    A backup in another region can be restored by creating a fork of the original service in the region where the secondary backup resides.
+.. code-block:: bash
 
-    When restoring in the sec region, the sec backup is taken. Otherwise, we use the primary backup.
+    curl --request POST                                                                                                      \
+        --url https://api.aiven.io/v1/project/YOUR-PROJECT-NAME/service/YOUR-SERVICE-NAME/backup_to_another_region/report    \
+        --header 'Authorization: Bearer YOUR-BEARER-TOKEN'                                                                   \
+        --header 'content-type: application/json'                                                                            \
+        --data '{"period":"DESIRED-TIME-PERIOD"}'
 
-    PITR - Fork and restore
+.. topic:: Output
 
-    You can fork/restore from PITR
-    Prim backup after the last backup time - ok
-    Sec backup after the last backup time - NOK
+    As an output, you get metrics including replication lags at specific points in time.
 
-    Migrate a service with BTAR
-    ---------------------------
+Fork and restore a service with BTAR
+------------------------------------
 
-    You can migrate a service with BTAR the same way you migrate a service with a regualr backup.
+You can use the `Aiven web console <https://console.aiven.io/>`_ to recover your service from a backup in another region. To restore your service using BTAR, :doc:`create a fork </docs/platform/howto/console-fork-service>` of the original service in the region where the secondary backup resides.
 
-    .. topic:: Location of a backup
+.. note::
 
+   When you use the secondary-backup region for **Fork & restore**, the seconadary backup is used. Otherwise, the service is recovered from the primary backup.
 
-    When I move a service:
-    Change of the primary backup location?? - never changes!!
-    Secondary/additional backup location?? - never changes!!
+1. Navigate to avigate to the `Aiven console <https://console.aiven.io/>`_ and go to your service homepage.
+2. Open the **Backups** view and select **Fork & restore**.
+3. In the **New Database Fork** window, apply the following settings:
+
+   1. Specify a name for your new service and select a project to host the service.
+   2. Select a scope of data to be forked: **Latest transaction** or **Point in time**.
+
+      .. note::
+
+         For the point-in-time recovery (PITR) option, set up the time to no later than the time of taking the latest backup.
+
+   3. Select the cloud provider that your existing service uses.
+   4. Select the cloud region corresponding to the target region of your secondary backup.
+   5. Select a service plan and click on **Create fork**.
+
+.. topic:: Result
+
+    A new service has been created based on the secondary backup of your primary service.
+
+Migrate a service with BTAR
+---------------------------
+
+You can migrate a service with BTAR the same way you :doc:`migrate a service with a regualar backup </docs/platform/howto/migrate-services-cloud-region>`.
+
+.. topic:: Backup location vs service migration
+
+   When you migrate your service, locations of service backups, both primary and secondary ones, do not change.
