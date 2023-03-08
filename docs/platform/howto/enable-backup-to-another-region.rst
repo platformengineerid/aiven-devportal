@@ -75,11 +75,11 @@ Use the :ref:`avn service create <avn-cli-service-create>` command to create a n
 
 .. code-block:: bash
 
-    avn service create                                    \
-        --service-type service_type_name                  \
-        --cloud cloud_region_name                         \
-        --plan service_plan_name                          \
-        -c additional_backup_regions=name_of_cloud_region \
+    avn service create                                      \
+        --service-type service_type_name                    \
+        --cloud cloud_region_name                           \
+        --plan service_plan_name                            \
+        -c additional_backup_regions=[name_of_cloud_region] \
         new_service_name
 
 .. _existing-service-cli:
@@ -92,7 +92,7 @@ Use the :ref:`avn service update <avn-cli-service-update>` command to configure 
 .. code-block:: bash
 
     avn service update name_of_existing_service                    \
-        -c additional_backup_regions=name_of_cloud_region
+        -c additional_backup_regions=[name_of_cloud_region]
 
 Back up to another region with API
 ----------------------------------
@@ -119,7 +119,7 @@ Use the `ServiceCreate <https://api.aiven.io/doc/#tag/Service/operation/ServiceC
 
 .. code-block:: bash
 
-    curl --request POST                                                   \
+    curl --request POST                                                    \
         --url https://api.aiven.io/v1/project/YOUR_PROJECT_NAME/service    \
         --header 'Authorization: Bearer YOUR_BEARER_TOKEN'                 \
         --header 'content-type: application/json'                          \

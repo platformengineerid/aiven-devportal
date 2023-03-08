@@ -34,7 +34,7 @@ To check out the target region and the replication lag for a secondary (BTAR) ba
 Configure the call as follows:
 
 1. Enter YOUR-PROJECT-NAME and YOUR-SERVICE-NAME into the URL.
-2. Specify DESIRED-TIME-PERIOD depending on the time period you need the mertrics for: select one of the following values for the ``period`` key: ``hour``, ``day``, ``week``, ``month``, or ``year``.
+2. Specify DESIRED-TIME-PERIOD depending on the time period you need the metrics for: select one of the following values for the ``period`` key: ``hour``, ``day``, ``week``, ``month``, or ``year``.
 
 .. code-block:: bash
 
@@ -55,9 +55,9 @@ You can use the `Aiven web console <https://console.aiven.io/>`_ to recover your
 
 .. note::
 
-   When you use the secondary-backup region for **Fork & restore**, the seconadary backup is used. Otherwise, the service is recovered from the primary backup.
+   When you use the secondary-backup region for **Fork & restore**, the secondary backup is used. Otherwise, the service is recovered from the primary backup.
 
-1. Navigate to avigate to the `Aiven console <https://console.aiven.io/>`_ and go to your service homepage.
+1. Open the `Aiven console <https://console.aiven.io/>`_ and navigate to your service homepage.
 2. Open the **Backups** view and select **Fork & restore**.
 3. In the **New Database Fork** window, apply the following settings:
 
