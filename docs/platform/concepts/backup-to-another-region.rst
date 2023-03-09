@@ -1,34 +1,63 @@
 Backup to another region for Aiven services |beta|
 ==================================================
 
-..
-    About BTAR
-    https://aiven.slab.com/posts/backup-to-another-region-uskzhy8d
+In  this article, you can discover the backup to another region (BTAR) feature, which you can enable on your Aiven services. Check out what BTAR allows and how you can benefit from its capabilities.
 
-    Backup to another region (BTAR) allows existing backup files to be copied from the service's default backup region to one or more new regions. This is a disaster recovery feature, it allows forking the service from an additional copy of the backup, residing on a different region and/or cloud provider, useful if the original region is completely down.
-    Supported services
-    OpenSearch (Beta)MySQL (Beta)
-    PG (Beta)
-    Limitations
+About the backup to another region
+----------------------------------
 
-    Cross-regions but within the same cloud provider?
+The backup to another region (BTAR) feature allows existing backup files to be copied from the service's priamry backup region to one or more regions different from the primary one. As a disaster recovery feature, BTAR is particularly useful when the service-hosting region is down since it allows forking the service from an additional copy of the backup residing outside the service-hosting region.
 
-    <Response [400]>
-    ERROR	command failed: Error: {"errors":[{"message":"Cannot use 'azure-uae-north' for the authorized tenant","status":400}],"message":"Cannot 
-    use 'azure-uae-north' for the authorized tenant"}
+BTAR is currently supported for the following services:
 
-    PITR - Fork and restore
+* Aiven for PostgreSQL®
+* Aiven for MySQL®
 
-    You can fork/restore from PITR
-    Prim backup after the last backup time - ok
-    Sec backup after the last backup time - NOK
-    When migrating a service
+How it works
+------------
 
-    When I move a service:
-    Change of the primary backup location?? - never changes!!
-    Secondary/additional backup location?? - never changes!!
-    Fork and restore
+.. mermaid::
 
-    Recovery from an additional location > Fork and restore
-    A backup in another region can be restored by creating a fork of the original service in the region where the secondary backup resides.
-    When restoring in the sec region, the sec backup is taken. Otherwise, we use the primary backup.
+    flowchart LR
+        subgraph Primary_region
+            direction TB
+            subgraph Service_X
+                end
+            subgraph Primary_backups
+                direction LR
+                PB1
+                PB2
+                PB3
+                PBn
+                end
+            end
+        subgraph Secondary_region
+            direction TB
+            subgraph Forked_service_X
+                end
+            subgraph Secondary_backups
+                direction LR
+                SB1
+                SB2
+                SB3
+                SBn
+                end
+            end
+        Service_X -- Default \n backups --> Primary_backups
+        Primary_backups -- Cross-region backups \n if BTAR  enabled --> Secondary_backups
+        Secondary_backups -- Secondary backups \n to restore service X --> Forked_service_X
+        Service_X -- Forking service X \n if primary region down --> Forked_service_X
+
+Limitations
+-----------
+
+* When selecting a cloud region for your additional backup, you need to use the same cloud provider that your service uses.
+* When you want to :ref:`restore your service from an additional backup <fork-and-restore>` and you use a point in time to specify the scope of data to be backed up, you need to set up the time to no later than the time of taking the latest backup.
+* To restore a service from an additional (not default) backup, you need to create a fork of the original service in the region where the additional backup resides.
+
+What's next
+-----------
+
+* :doc:`Enable BTAR </docs/platform/howto/enable-backup-to-another-region>`
+* :doc:`Manage BTAR </docs/platform/howto/manage-backup-to-another-region>`
+* :doc:`Disable BTAR </docs/platform/howto/disable-backup-to-another-region>`

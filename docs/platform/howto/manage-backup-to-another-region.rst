@@ -48,6 +48,8 @@ Configure the call as follows:
 
     As an output, you get metrics including replication lags at specific points in time.
 
+.. _fork-and-restore:
+
 Fork and restore a service with BTAR
 ------------------------------------
 
