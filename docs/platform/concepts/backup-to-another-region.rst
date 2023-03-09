@@ -16,7 +16,7 @@ BTAR is currently supported for the following services:
 How it works
 ------------
 
-By enabling the backup to another region (BTAR) feature, you create an additional backup on top of the default one located in a primary region where your service is hosted. Contrary to the primary backup, the secondary backup is located outside the primary region but with the same cloud provider. Secondary backups are taken from primary backups, not from the service itself.
+By enabling the backup to another region (BTAR) feature, you create an additional backup on top of the default one located in a primary region where your service is hosted. Contrary to the primary backup, the secondary backup is located outside the primary region. Secondary backups are taken from primary backups, not from the service itself.
 
 If you want to have your service restored from a secondary backup, for example, in case of an outage of the primary region, you create a fork of the service using a region where your secondary backup is located.
 
