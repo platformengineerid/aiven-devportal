@@ -6,7 +6,7 @@ In  this article, you can discover the backup to another region (BTAR) feature, 
 About the backup to another region
 ----------------------------------
 
-The backup to another region (BTAR) feature allows existing backup files to be copied from the service's priamry backup region to one or more regions different from the primary one. As a disaster recovery feature, BTAR is particularly useful when the service-hosting region is down since it allows forking the service from an additional copy of the backup residing outside the service-hosting region.
+The backup to another region (BTAR) feature allows existing backup files to be copied from the service's primary backup region to one or more regions different from the primary one. As a disaster recovery feature, BTAR is particularly useful when the service-hosting region is down since it allows forking the service from an additional copy of the backup residing outside the service-hosting region. In this way, BTAR provides an additional level of security for your data in case of an outage or a downtime on the primary region.
 
 BTAR is currently supported for the following services:
 
@@ -16,9 +16,9 @@ BTAR is currently supported for the following services:
 How it works
 ------------
 
-By enabling the backup to another region (BTAR) feature, you create an additional backup on top of the default one located in a primary region where the service is hosted. Contrary to the primary backup, the additional secondary backup is located outside the primary region.
+By enabling the backup to another region (BTAR) feature, you create an additional backup on top of the default one located in a primary region where your service is hosted. Contrary to the primary backup, the secondary backup is located outside the primary region but with the same cloud provider. Secondary backups are taken from primary backups, not from the service itself.
 
-Secondary backups are taken from primary backups, not from the service itself.
+If you want to have your service restored from a secondary backup, for example, in case of an outage of the primary region, you create a fork of the service using a region where your secondary backup is located.
 
 .. mermaid::
 
@@ -51,11 +51,6 @@ Secondary backups are taken from primary backups, not from the service itself.
         Primary_backups -- Cross-region backups \n if BTAR  enabled --> Secondary_backups
         Secondary_backups -- Secondary backups \n to restore service X --> Forked_service_X
         Service_X -- Forking service X \n if primary region down --> Forked_service_X
-
-Benefits
---------
-
-* Additional level of security for your data useful in case of outages or downtimes on the primary region
 
 Limitations
 -----------
