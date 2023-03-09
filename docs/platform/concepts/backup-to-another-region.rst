@@ -16,6 +16,10 @@ BTAR is currently supported for the following services:
 How it works
 ------------
 
+By enabling the backup to another region (BTAR) feature, you create an additional backup on top of the default one located in a primary region where the service is hosted. Contrary to the primary backup, the additional secondary backup is located outside the primary region.
+
+Secondary backups are taken from primary backups, not from the service itself.
+
 .. mermaid::
 
     flowchart LR
@@ -47,6 +51,11 @@ How it works
         Primary_backups -- Cross-region backups \n if BTAR  enabled --> Secondary_backups
         Secondary_backups -- Secondary backups \n to restore service X --> Forked_service_X
         Service_X -- Forking service X \n if primary region down --> Forked_service_X
+
+Benefits
+--------
+
+* Additional level of security for your data useful in case of outages or downtimes on the primary region
 
 Limitations
 -----------
