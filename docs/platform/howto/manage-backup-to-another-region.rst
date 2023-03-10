@@ -16,7 +16,7 @@ There are a few things you may want to check for your Aiven service in the conte
 * Does your service has a backup in another region created?
 * What is the status of the secondary backup?
 * What is the target region of the secondary backup?
-* What is the replication lag between the primary region and the secondary region?
+* What is the replication lag between data availability in the primary region and the secondary region?
 
 Use the console
 '''''''''''''''
