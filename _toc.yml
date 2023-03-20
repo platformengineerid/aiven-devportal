@@ -1105,6 +1105,8 @@ entries:
               - file: docs/products/postgresql/howto/optimize-pg-slow-queries
               - file: docs/products/postgresql/howto/check-avoid-transaction-id-wraparound
               - file: docs/products/postgresql/howto/prevent-full-disk
+              - file: docs/products/postgresql/howto/pgaudit-logging
+                title: Audit logs
           - file: docs/products/postgresql/howto/list-replication-migration
             title: Migrate
             entries:
