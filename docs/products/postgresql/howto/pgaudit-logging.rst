@@ -52,7 +52,7 @@ To configure PGAudit, use the ``aiven-extras`` extension and its ``set_pgaudit_p
 
 .. topic:: Parameters
 
-   For detailed information on all the parameters used for configuring PGAudit, see `Settings <https://github.com/pgaudit/pgaudit/tree/6afeae52d8e4569235bf6088e983d95ec26f13b7#settings>`_.
+   For detailed information on all the parameters used for configuring PGAudit, see `Settings <https://github.com/pgaudit/pgaudit/tree/6afeae52d8e4569235bf6088e983d95ec26f13b7#readme>`_.
 
    There are a few parameter that you may want to check out first:
 
