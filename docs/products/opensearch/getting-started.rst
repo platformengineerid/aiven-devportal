@@ -15,7 +15,7 @@ Create an Aiven for OpenSearch® service
 
 Once the service is ready, the status changes to *Running*. Depending on your selected cloud provider and region, this generally takes a couple of minutes.
 
-.. access-os-dashboards:
+.. _access-os-dashboards:
 
 Access OpenSearch Dashboards 
 ---------------------------------
