@@ -72,7 +72,7 @@ To configure PGAudit, use the ``aiven-extras`` extension and its ``set_pgaudit_p
 Access your logs
 ----------------
 
-To access audit logs from Aiven for PostgreSQL, you need to create an integration with a service that allows monitoring and analyzing logs. For that purpose, you can seamlessly integrate Aiven for PostgreSQL with the Aiven for OpenSearch® service.
+To access audit logs from Aiven for PostgreSQL, you need to create an integration with a service that allows monitoring and analyzing logs. For that purpose, you can seamlessly integrate Aiven for PostgreSQL with an Aiven for OpenSearch® service.
 
 Use the console
 '''''''''''''''
@@ -82,7 +82,7 @@ For instructions on how to integrate your service with Aiven for OpenSearch, see
 Use Aiven CLI
 '''''''''''''
 
-You can also use Aiven CLI to create the service integration.
+You can also use :doc:`Aiven CLI </docs/tools/cli>` to create the service integration.
 
 .. code-block:: bash
 
@@ -93,16 +93,18 @@ You can also use Aiven CLI to create the service integration.
 
 .. topic:: Results
 
-   After the service integration is set up and propagated to the service configuration, the logs are available in Aiven for OpenSearch.
+   After the service integration is set up and propagated to the service configuration, the logs are available in Aiven for OpenSearch. Each log record emitted by PGAudit is stored in Aiven for OpenSearch as a single message, which cannot be guaranteed for external integrations such as Remote Syslog.
 
 Visualize your logs
 -------------------
 
-Since your logs are already available in Aiven for OpenSearch, you can use :doc:`OpenSearch Dashboards </docs/products/opensearch/dashboards>` to visualize them. Check out how to access OpenSearch Dashboards in :ref:`Access OpenSearch Dashboards <access-os-dashboards>`.
+Since your logs are already available in Aiven for OpenSearch, you can use :doc:`OpenSearch Dashboards </docs/products/opensearch/dashboards>` to visualize them. Check out how to access OpenSearch Dashboards in :ref:`Access OpenSearch Dashboards <access-os-dashboards>`. For instructions on how to start using OpenSearch Dashboards, see :doc:`Getting started </docs/products/opensearch/dashboards/getting-started>`.
 
-For instructions on how to start using OpenSearch Dashboards, see :doc:`Getting started </docs/products/opensearch/dashboards/getting-started>`.
+To preview your audit logs in OpenSearch Dashboards, use the filtering tool by selecting ``AIVEN_AUDIT_FROM``, setting its value to `pg`, and applying the filter.
 
-Note: If the Index Pattern in Kibana was configured before you enable the service integration, the audit-specific AIVEN_AUDIT_FROM field is not available for filtering. In such cases, you can refresh the field list for the index in Kibana under Stack Management → Index Patterns → <Your Index Pattern> → Refresh field list.
-For audit logs of an Aiven for PostgreSQL instance, the AIVEN_AUDIT_FROM field is set to pg to allow you to easily filter those records:
+.. image:: /images/products/postgresql/pgaudit-logs-in-os-dashboards.png
+   :alt: PGAudit logs in OpenSearch Dashboards
 
-This shows only the relevant results. Each log record emitted by PGAudit is stored in  Elasticsearch as a single message. Note that this cannot be guaranteed for external integrations such as Remote Syslog, as the line breaks within a given record can be interpreted as record separators. 
+.. note::
+
+   If the index pattern in OpenSearch Dashboards had been configured before you enabled the service integration, the audit-specific AIVEN_AUDIT_FROM field is not available for filtering. Refresh the fields list for the index in OpenSearch Dashboards under **Stack Management** → **Index Patterns** → Your index pattern → **Refresh field list**.
