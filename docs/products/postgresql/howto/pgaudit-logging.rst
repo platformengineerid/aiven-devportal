@@ -68,3 +68,41 @@ To configure PGAudit, use the ``aiven-extras`` extension and its ``set_pgaudit_p
      Include the statement text and parameters in log messages
    ``log_statement_once`` (default: off)
      Include the statement text and parameters with (only) the first log entry for a statement/   sub-statement combination
+
+Access your logs
+----------------
+
+To access audit logs from Aiven for PostgreSQL, you need to create an integration with a service that allows monitoring and analyzing logs. For that purpose, you can seamlessly integrate Aiven for PostgreSQL with the Aiven for OpenSearch® service.
+
+Use the console
+'''''''''''''''
+
+For instructions on how to integrate your service with Aiven for OpenSearch, see :ref:`Enable log integratioin <enable-log-integration>`.
+
+Use Aiven CLI
+'''''''''''''
+
+You can also use Aiven CLI to create the service integration.
+
+.. code-block:: bash
+
+   avn service integration-create --project $PG_PROJECT \
+     -t logs                                            \
+     -s $PG_SERVICE_NAME                                \
+     -d $OS_SERVICE_NAME
+
+.. topic:: Results
+
+   After the service integration is set up and propagated to the service configuration, the logs are available in Aiven for OpenSearch.
+
+Visualize your logs
+-------------------
+
+Since your logs are aleardy available in Aiven for OpenSearch, you can use :doc:`OpenSearch Dashboards </docs/products/opensearch/dashboards>`. Check out how to access OpenSearch Dashboards in :ref:`Access OpenSearch Dashboards <access-os-dashboards>`.
+
+For instructions on how to start using OpenSearch Dashboards, see :doc:`Getting started </docs/products/opensearch/dashboards/getting-started>`.
+
+Note: If the Index Pattern in Kibana was configured before you enable the service integration, the audit-specific AIVEN_AUDIT_FROM field is not available for filtering. In such cases, you can refresh the field list for the index in Kibana under Stack Management → Index Patterns → <Your Index Pattern> → Refresh field list.
+For audit logs of an Aiven for PostgreSQL instance, the AIVEN_AUDIT_FROM field is set to pg to allow you to easily filter those records:
+
+This shows only the relevant results. Each log record emitted by pgAudit is stored in  Elasticsearch as a single message. Note that this cannot be guaranteed for external integrations such as Remote Syslog, as the line breaks within a given record can be interpreted as record separators. 
