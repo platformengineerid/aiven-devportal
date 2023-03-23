@@ -57,8 +57,8 @@ If you want to have your service restored from a secondary backup, for example, 
 Limitations
 -----------
 
-* When selecting a cloud region for your additional backup, you need to use the same cloud provider that your service uses.
-* When you want to :ref:`restore your service from an additional backup <fork-and-restore>` and you use a point in time to specify the scope of data to be backed up, you need to set up the time to no later than the time of taking the latest backup.
+* When selecting a cloud region for your additional backup, you need to use the same cloud provider that your service uses (support for creating cross-cloud-provider backups coming soon!).
+* When you want to :ref:`restore your service from an additional backup <fork-and-restore>` and you use a point in time to specify the scope of data to be restored, you need to set up the time to no later than the time of the latest backup.
 * To restore a service from an additional (not default) backup, you need to create a fork of the original service in the region where the additional backup resides.
 * Secondary backup is available only after a primary backup is there and there might be a data replication lag between the primary region and the secondary region.
 

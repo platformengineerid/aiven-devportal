@@ -39,6 +39,10 @@ Back up to another region via console
 4. In the **Edit advanced configuration** window, select **Add configuration option** > **additional backup regions**.
 5. Enter a region name into the **additional backup regions** field and select **Save advanced configuration**.
 
+   .. tip::
+
+      For names of the cloud regions supported in Aiven, see column *Cloud* in :doc:`List of available cloud regions </docs/platform/reference/list_of_clouds>`.
+
 .. image:: /images/platform/howto/add-advanced-parameter.png
    :width: 100%
    :alt: Add advanced parameter
@@ -92,7 +96,7 @@ Use the :ref:`avn service update <avn-cli-service-update>` command to configure 
 .. code-block:: bash
 
     avn service update name_of_existing_service                    \
-        -c additional_backup_regions=[name_of_cloud_region]
+        -c additional_backup_regions=[\"name_of_cloud_region\"]
 
 Back up to another region with API
 ----------------------------------
