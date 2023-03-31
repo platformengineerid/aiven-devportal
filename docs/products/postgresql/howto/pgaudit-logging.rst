@@ -23,6 +23,10 @@ Prerequisites
 Enable audit logs
 '''''''''''''''''
 
+.. note::
+
+    Configuration changes you are about to make take effect only on new connections.
+
 To configure PGAudit, use the ``aiven-extras`` extension and its ``set_pgaudit_parameter()`` function on a per-database level.
 
 1. Use :doc:`Aiven CLI </docs/tools/cli>` (or :doc:`psql </docs/products/postgresql/howto/connect-psql>`) to connect to your instance.
