@@ -39,7 +39,7 @@ To configure PGAudit, use the ``aiven-extras`` extension and its ``set_pgaudit_p
 
    .. code-block:: bash
 
-      CREATE EXTENSION pgaudit;
+      CREATE EXTENSION pgaudit CASCADE;
       CREATE EXTENSION aiven_extras CASCADE;
 
 3. Use ``aiven_extras.set_pgaudit_parameter()`` to configure PGAudit.
