@@ -6,7 +6,7 @@ The backup to another region (BTAR) feature allows you to create a service backu
 Prerequisites
 -------------
 
-You have at least one Aiven service with BTAR enabled.
+You have at least one :doc:`Aiven service with BTAR enabled </docs/platform/howto/enable-backup-to-another-region>`.
 
 Monitor a service with BTAR
 ---------------------------
