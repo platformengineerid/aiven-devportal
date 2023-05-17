@@ -1,7 +1,11 @@
-Use PGAudit for logging on Aiven for PostgreSQL®
-================================================
+Collect audit logs in Aiven for PostgreSQL®
+===========================================
 
 Discover the PostgreSQL® audit logging extension and its capabilities. Learn how to enable PGAudit on your Aiven for PostgreSQL service and how to access and visualize your logs.
+
+.. topic:: Feature availability
+
+   This feature has a limited availability. For details, see `Comapre plans <https://aiven.io/pricing?product=pg>`_.
 
 About PGAudit
 -------------
