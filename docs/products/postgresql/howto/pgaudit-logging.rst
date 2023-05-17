@@ -5,7 +5,7 @@ Discover the PostgreSQL® audit logging extension and its capabilities. Learn ho
 
 .. topic:: Feature availability
 
-   This feature has a limited availability. For details, see `Comapre plans <https://aiven.io/pricing?product=pg>`_.
+   This feature has a limited availability. For details, see `Compare plans <https://aiven.io/pricing?product=pg>`_.
 
 About PGAudit
 -------------
