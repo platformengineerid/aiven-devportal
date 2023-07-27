@@ -1,11 +1,11 @@
 Collect audit logs in Aiven for PostgreSQL®
 ===========================================
 
+.. important::
+
+   PostgreSQL® audit logging is a limited availability feature. If you're interested in trying out this feature, contact the sales team at `sales@Aiven.io <mailto:sales@Aiven.io>`_.
+
 Discover the PostgreSQL® audit logging extension and its capabilities. Learn how to enable PGAudit on your Aiven for PostgreSQL service and how to access and visualize your logs.
-
-.. topic:: Feature availability
-
-   This feature has a limited availability. For details, see `Compare plans <https://aiven.io/pricing?product=pg>`_.
 
 About PGAudit
 -------------

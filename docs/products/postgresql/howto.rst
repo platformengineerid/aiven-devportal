@@ -38,6 +38,7 @@ Aiven for PostgreSQL® how-tos
     - :doc:`Optimize PostgreSQL® slow queries </docs/products/postgresql/howto/optimize-pg-slow-queries>`
     - :doc:`Check and avoid transaction ID wraparound </docs/products/postgresql/howto/check-avoid-transaction-id-wraparound>`
     - :doc:`Prevent PostgreSQL® full disk issues </docs/products/postgresql/howto/prevent-full-disk>`
+    - :doc:`Collect audit logs in Aiven for PostgreSQL® </docs/products/postgresql/howto/pgaudit-logging>`
 
 .. dropdown:: Migration
 

@@ -66,3 +66,8 @@ Database administration tasks
     .. grid-item-card:: :doc:`Prevent PostgreSQL® full disk issues </docs/products/postgresql/howto/prevent-full-disk>`
         :shadow: md
         :margin: 2 2 0 0
+
+    .. grid-item-card:: :doc:`Collect audit logs in Aiven for PostgreSQL® </docs/products/postgresql/howto/pgaudit-logging>`
+        :shadow: md
+        :margin: 2 2 0 0
+
