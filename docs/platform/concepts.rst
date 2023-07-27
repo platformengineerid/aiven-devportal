@@ -66,6 +66,7 @@ Learn about some of the key concepts for working with Aiven platform:
 * `Choosing a time series database`_.
   
   Choosing a time series database in Aiven Console.
+
 * :doc:`Service resources </docs/platform/concepts/service-resources>`
   
   Learn about why services in Aiven have different resources than the VM it is running on.
@@ -73,6 +74,10 @@ Learn about some of the key concepts for working with Aiven platform:
 * :doc:`Availability zones </docs/platform/concepts/availability-zones>`.
 
   Find out what availability zones are and how they can be used to improve data security and availability.
+
+* :doc:`Backup to another region </docs/platform/concepts/backup-to-another-region>`.
+
+  Discover the backup to another region (BTAR) feature, which you can enable on your Aiven services. Check out what BTAR allows and how you can benefit from its capabilities.
 
 .. We would like to use a :doc: role for this, but at 2022-08, vale will
    spell-check the URL if we do so, and complain about 'timeseries'
