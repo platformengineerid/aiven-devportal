@@ -3,7 +3,7 @@ Collect audit logs in Aiven for PostgreSQL®
 
 .. important::
 
-   PostgreSQL® audit logging is a limited availability feature. If you're interested in trying out this feature, contact the sales team at `sales@Aiven.io <mailto:sales@Aiven.io>`_.
+   PostgreSQL® audit logging is a :doc:`limited availability feature </docs/platform/concepts/beta_services>`. If you're interested in trying out this feature, contact the sales team at `sales@Aiven.io <mailto:sales@Aiven.io>`_.
 
 Discover the PostgreSQL® audit logging extension and its capabilities. Learn how to enable PGAudit on your Aiven for PostgreSQL service and how to access and visualize your logs.
 
@@ -29,9 +29,9 @@ Enable audit logs
 
 .. note::
 
-    Configuration changes you are about to make take effect only on new connections.
+    Configuration changes take effect only on new connections.
 
-To configure PGAudit, use the ``aiven-extras`` extension and its ``set_pgaudit_parameter()`` function on a per-database level.
+To configure PGAudit, use the ``aiven-extras`` extension and its ``set_pgaudit_parameter()`` function on the service level.
 
 1. Use :doc:`Aiven CLI </docs/tools/cli>` (or :doc:`psql </docs/products/postgresql/howto/connect-psql>`) to connect to your instance.
 
@@ -48,11 +48,11 @@ To configure PGAudit, use the ``aiven-extras`` extension and its ``set_pgaudit_p
 
 3. Use ``aiven_extras.set_pgaudit_parameter()`` to configure PGAudit.
 
-   .. note:::
+   .. note::
 
-      By default, PGAudit does not send emit any audit records.
+      By default, PGAudit does not emit any audit records.
 
-    To enable the logging and start getting audit records, configure relevant parameters using ``set_pgaudit_parameter`` with the parameter and the target database name.
+   To enable the logging and start getting audit records, configure relevant parameters using ``set_pgaudit_parameter`` with the parameter and the target database name.
 
    .. code-block:: bash
 
@@ -75,7 +75,7 @@ To configure PGAudit, use the ``aiven-extras`` extension and its ``set_pgaudit_p
    ``log_statement`` (default: on)
      Include the statement text and parameters in log messages
    ``log_statement_once`` (default: off)
-     Include the statement text and parameters with (only) the first log entry for a statement/   sub-statement combination
+     Include the statement text and parameters with (only) the first log entry for a statement/ sub-statement combination
 
 Access your logs
 ----------------
