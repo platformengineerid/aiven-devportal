@@ -3,7 +3,7 @@ Backup to another region for Aiven services
 
 .. important::
 
-    Backup to another region (BTAR) is a limited availability feature. If you're interested in trying out this feature, contact the sales team at `sales@Aiven.io <mailto:sales@Aiven.io>`_.
+    Backup to another region (BTAR) is a :doc:`limited availability feature </docs/platform/concepts/beta_services>`. If you're interested in trying out this feature, contact the sales team at `sales@Aiven.io <mailto:sales@Aiven.io>`_.
 
 In  this article, you can discover the backup to another region (BTAR) feature, which you can enable on your Aiven services. Check out what BTAR allows and how you can benefit from its capabilities.
 

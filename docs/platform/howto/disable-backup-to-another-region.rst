@@ -3,7 +3,7 @@ Remove a backup from another region
 
 .. important::
 
-    Backup to another region (BTAR) is a limited availability feature. If you're interested in trying out this feature, contact the sales team at `sales@Aiven.io <mailto:sales@Aiven.io>`_.
+    Backup to another region (BTAR) is a :doc:`limited availability feature </docs/platform/concepts/beta_services>`. If you're interested in trying out this feature, contact the sales team at `sales@Aiven.io <mailto:sales@Aiven.io>`_.
 
 To disable the backup to another region (BTAR) feature for your service, you can use the Aiven web console, CLI, or API. Learn a few simple steps to remove a backup of your service created in a region different from the region hosting the service.
 
