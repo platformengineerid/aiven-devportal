@@ -3,79 +3,160 @@ Collect audit logs in Aiven for PostgreSQL®
 
 .. important::
 
-   PostgreSQL® audit logging is a :doc:`limited availability feature </docs/platform/concepts/beta_services>`. If you're interested in trying out this feature, contact the sales team at `sales@Aiven.io <mailto:sales@Aiven.io>`_.
+   Aiven for PostgreSQL® audit logging is a :doc:`limited availability feature </docs/platform/concepts/beta_services>`. If you're interested in trying out this feature, contact the sales team at `sales@Aiven.io <mailto:sales@Aiven.io>`_.
 
-Discover the PostgreSQL® audit logging extension and its capabilities. Learn how to enable PGAudit on your Aiven for PostgreSQL service and how to access and visualize your logs.
+Learn how to enable and configure the Aiven for PostgreSQL® audit logging feature on your Aiven for PostgreSQL service. Find out how to access and visualize your logs.
 
-About PGAudit
--------------
+About the audit logging
+-----------------------
 
-`PGAudit <https://www.pgaudit.org/#>`_ is a PostgreSQL extension that allows comprehensive session and object audit logging. PGAudit is particularly useful when you need detailed logs for state, financial, or ISO certification audits, where *audits* are official inspections conducted by independent institutions authorized to examine specific subjects.
+The audit logging feature allows you to monitor and track activities within relational database systems, which helps to achieve the following:
+  
+* Data security and integrity
+* Detection and prevention of an unauthorized access, data breaches, and unexpected changes
+* Identification of a potential fraud or misuse
+* Compliance with regulations and standards required either by an industry or a government
+* Accountability (by user and change tracking)
+* Improved incident management and root cause analysis
+* :doc:`Other </docs/products/postgresql/concepts/pg-audit-logging>`
 
-What distinguishes PGAudit from other logging facilities is the level of detail it supports for logs. With a regular logging tool, you can get a list of all the operations performed against the database, which is good enough for monitoring purposes. However, audits often require getting to specific statements as requested by auditors, which is what PGAudit helps you achieve.
+.. seealso::
 
-Set up PGAudit
---------------
+   For more information on the PostgreSQL® audit logging feature, check out :doc:`PostgreSQL® audit logging </docs/products/postgresql/concepts/pg-audit-logging>`.
+
+Enable the audit logging
+------------------------
+
+You can enable the audit logging by setting the ``pgaudit.featureEnabled`` parameter to ``true`` in your service's advanced configuration. You can do that using `Aiven Console <https://console.aiven.io>`_, `Aiven API <https://api.aiven.io/doc/>`_, or :doc:`Aiven CLI </docs/tools/cli>`.
 
 Prerequisites
 '''''''''''''
 
-* Aiven for PostgreSQL version 11 or higher
-* ``avnadmin`` role for enabling and configuring PGAudit
+* Aiven for PostgreSQL Pro Plan
+* PostgreSQL version 11 or higher
+* ``avnadmin`` role
 * :doc:`Aiven CLI </docs/tools/cli>` / ``psql``
 
-Enable audit logs
-'''''''''''''''''
+Enable audit logs in Aiven Console
+''''''''''''''''''''''''''''''''''
 
-.. note::
+1. Go to `Aiven Console <https://console.aiven.io>`_ > organization > project > Aiven for PostgreSQL service > **Overview** > **Advanced configuration** > **Change** > **Add configuration option**.
+2. Add the ``pgaudit.featureEnabled`` parameter and set it to ``true``.
+3. Save the updated configuration.
 
-    Configuration changes take effect only on new connections.
+Enable audit logs with Aiven CLI
+''''''''''''''''''''''''''''''''
 
-To configure PGAudit, use the ``aiven-extras`` extension and its ``set_pgaudit_parameter()`` function on the service level.
+Enable audit logs with Aiven API
+''''''''''''''''''''''''''''''''
 
-1. Use :doc:`Aiven CLI </docs/tools/cli>` (or :doc:`psql </docs/products/postgresql/howto/connect-psql>`) to connect to your instance.
-
-   .. code-block:: bash
-
-      avn service cli --project $PG_PROJECT $PG_SERVICE_NAME
-
-2. Enable ``pgaudit`` and ``aiven-extras`` extensions.
-
-   .. code-block:: bash
-
-      CREATE EXTENSION pgaudit CASCADE;
-      CREATE EXTENSION aiven_extras CASCADE;
-
-3. Use ``aiven_extras.set_pgaudit_parameter()`` to configure PGAudit.
-
+..
    .. note::
 
-      By default, PGAudit does not emit any audit records.
+      Configuration changes take effect only on new connections.
 
-   To enable the logging and start getting audit records, configure relevant parameters using ``set_pgaudit_parameter`` with the parameter and the target database name.
+   To configure the audit logging, use the ``aiven-extras`` extension and its ``set_pgaudit_parameter()`` function on the service level.
 
-   .. code-block:: bash
+   1. Use :doc:`Aiven CLI </docs/tools/cli>` (or :doc:`psql </docs/products/postgresql/howto/connect-psql>`) to connect to your instance.
 
-      SELECT aiven_extras.set_pgaudit_parameter('log', 'defaultdb', 'all, -misc');
+      .. code-block:: bash
 
-.. topic:: Parameters
+         avn service cli --project $PG_PROJECT $PG_SERVICE_NAME
 
-   For detailed information on all the parameters used for configuring PGAudit, see `Settings <https://github.com/pgaudit/pgaudit/tree/6afeae52d8e4569235bf6088e983d95ec26f13b7#readme>`_.
+   2. Enable ``pgaudit`` and ``aiven-extras`` extensions.
 
-   There are a few parameters that you might want to check out first:
+      .. code-block:: bash
 
-   ``log`` (default: none)
-     Classes of statements to be logged
-   ``log_catalog`` (default: on)	
-     Whether to include logs for ``pg_catalog`` queries 
-   ``log_parameter`` (default: off)
-     Include CSV-formatted parameters in the log records
-   ``log_relation`` (default: off)
-     Create separate log messages for each relation in a (SELECT or DML) query
-   ``log_statement`` (default: on)
-     Include the statement text and parameters in log messages
-   ``log_statement_once`` (default: off)
-     Include the statement text and parameters with (only) the first log entry for a statement/ sub-statement combination
+         CREATE EXTENSION pgaudit CASCADE;
+         CREATE EXTENSION aiven_extras CASCADE;
+
+   3. Use ``aiven_extras.set_pgaudit_parameter()`` to configure the audit logging.
+
+      .. note::
+
+         By default, the audit logging does not emit any audit records.
+
+      To enable the logging and start getting audit records, configure relevant parameters using ``set_pgaudit_parameter`` with the parameter and the target database name.
+
+      .. code-block:: bash
+
+         SELECT aiven_extras.set_pgaudit_parameter('log', 'defaultdb', 'all, -misc');
+
+Configure the audit logging
+---------------------------
+
+You can configure the audit logging by setting different audit logging parameters to in your service's advanced configuration. You can do that using `Aiven Console <https://console.aiven.io>`_, `Aiven API <https://api.aiven.io/doc/>`_, or :doc:`Aiven CLI </docs/tools/cli>`.
+
+Audit logging parameters
+''''''''''''''''''''''''
+
+For detailed information on all the parameters used for configuring the audit logging, see `Settings <https://github.com/pgaudit/pgaudit/tree/6afeae52d8e4569235bf6088e983d95ec26f13b7#readme>`_.
+
+There are a few parameters that you might want to configure for the audit logging:
+
+``pgaudit.targetDatabases``
+  Array of strings containing names of databases where the audit logging is to be enabled
+``pgaudit.log`` (default: none)
+  Classes of statements to be logged by the session audit logging
+``pgaudit.log_catalog`` (default: on)	
+  Whether the session audit logging should be enabled for a statement with all relations in pg_catalog
+``pgaudit.log_client``
+  Whether log messages should be visible to a client process, such as ``psql``
+``pgaudit.log_level``
+  Log level that should be used for log entries
+``pgaudit.log_parameter`` (default: off)
+  Whether audit logs should include the parameters passed with the statement
+``pgaudit.log_parameter_max_size`` 
+  Maximum size (in bytes) of a parameter's value that can be logged
+``pgaudit.log_relation`` (default: off)
+  Whether a separate log entry for each relation (for example, TABLE or VIEW) referenced in a SELECT or DML statement should be created
+``pgaudit.log_rows``
+  Whether the audit logging should include the rows retrieved or affected by a statement (with the rows field located after the parameter field)
+``pgaudit.log_statement`` (default: on)
+  Whether the audit logging should include the statement text and parameters
+``pgaudit.log_statement_once`` (default: off)
+  Whether the audit logging should include the statement text and parameters in the first log entry for a statement/ sub-statement combination (as opposed to including them in all the entries)
+``pgaudit.role``
+  Master role to use for an object audit logging
+
+Prerequisites
+'''''''''''''
+
+* Aiven for PostgreSQL Pro Plan
+* PostgreSQL version 11 or higher
+* ``avnadmin`` superuser role
+* :doc:`Aiven CLI </docs/tools/cli>` / ``psql``
+
+Configure audit logs in Aiven Console
+'''''''''''''''''''''''''''''''''''''
+
+1. Go to `Aiven Console <https://console.aiven.io>`_ > organization > project > Aiven for PostgreSQL service > **Overview** > **Advanced configuration** > **Change** > **Add configuration option**.
+2. Add a parameter and set it as needed.
+3. Save the updated configuration.
+
+Configure audit logs with Aiven CLI
+'''''''''''''''''''''''''''''''''''
+
+Configure audit logs with Aiven API
+'''''''''''''''''''''''''''''''''''
+
+Configure the session audit logging
+'''''''''''''''''''''''''''''''''''
+
+The session audit logging allows recording detailed logs of all SQL statements and commands executed during a database session in the backend of a system.
+
+Before enabling the session audit logging, make sure your setup meets the following prerequisites:
+
+* Aiven for PostgreSQL Pro Plan
+* Aiven for PostgreSQL version 11 or higher
+* ``avnadmin`` superuser role
+* SQL interface
+
+To enable the session audit logging, run the following query:
+
+.. code-block:: bash
+
+   set pgaudit.log = 'write, ddl';
 
 Access your logs
 ----------------
@@ -111,8 +192,17 @@ Since your logs are already available in Aiven for OpenSearch, you can use :doc:
 To preview your audit logs in OpenSearch Dashboards, use the filtering tool by selecting ``AIVEN_AUDIT_FROM``, setting its value to `pg`, and applying the filter.
 
 .. image:: /images/products/postgresql/pgaudit-logs-in-os-dashboards.png
-   :alt: PGAudit logs in OpenSearch Dashboards
+   :alt: Audit logging logs in OpenSearch Dashboards
 
 .. note::
 
    If the index pattern in OpenSearch Dashboards had been configured before you enabled the service integration, the audit-specific AIVEN_AUDIT_FROM field is not available for filtering. Refresh the fields list for the index in OpenSearch Dashboards under **Stack Management** → **Index Patterns** → Your index pattern → **Refresh field list**.
+
+Disable the audit logging
+-------------------------
+
+You can disable the audit logging on your database or service by setting the ``pgaudit.featureEnabled`` parameter to ``false`` in your service's advanced configuration. You can do that at any time using `Aiven Console <https://console.aiven.io>`_, `Aiven API <https://api.aiven.io/doc/>`_, or :doc:`Aiven CLI </docs/tools/cli>`.
+
+.. note::
+
+   The audit logging is disable automatically if you unsubscribe the service from Pro Plan.
