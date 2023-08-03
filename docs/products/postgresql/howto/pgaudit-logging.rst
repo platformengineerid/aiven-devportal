@@ -85,39 +85,11 @@ Enable audit logs with Aiven API
 Configure the audit logging
 ---------------------------
 
-You can configure the audit logging by setting different audit logging parameters to in your service's advanced configuration. You can do that using `Aiven Console <https://console.aiven.io>`_, `Aiven API <https://api.aiven.io/doc/>`_, or :doc:`Aiven CLI </docs/tools/cli>`.
+You can configure the audit logging by setting different `audit logging parameters <https://github.com/pgaudit/pgaudit/tree/6afeae52d8e4569235bf6088e983d95ec26f13b7#readme>`_ to in your service's advanced configuration. You can do that using `Aiven Console <https://console.aiven.io>`_, `Aiven API <https://api.aiven.io/doc/>`_, or :doc:`Aiven CLI </docs/tools/cli>`.
 
-Audit logging parameters
-''''''''''''''''''''''''
+.. topic:: Audit logging parameters
 
-For detailed information on all the parameters used for configuring the audit logging, see `Settings <https://github.com/pgaudit/pgaudit/tree/6afeae52d8e4569235bf6088e983d95ec26f13b7#readme>`_.
-
-There are a few parameters that you might want to configure for the audit logging:
-
-``pgaudit.targetDatabases``
-  Array of strings containing names of databases where the audit logging is to be enabled
-``pgaudit.log`` (default: none)
-  Classes of statements to be logged by the session audit logging
-``pgaudit.log_catalog`` (default: on)	
-  Whether the session audit logging should be enabled for a statement with all relations in pg_catalog
-``pgaudit.log_client``
-  Whether log messages should be visible to a client process, such as ``psql``
-``pgaudit.log_level``
-  Log level that should be used for log entries
-``pgaudit.log_parameter`` (default: off)
-  Whether audit logs should include the parameters passed with the statement
-``pgaudit.log_parameter_max_size`` 
-  Maximum size (in bytes) of a parameter's value that can be logged
-``pgaudit.log_relation`` (default: off)
-  Whether a separate log entry for each relation (for example, TABLE or VIEW) referenced in a SELECT or DML statement should be created
-``pgaudit.log_rows``
-  Whether the audit logging should include the rows retrieved or affected by a statement (with the rows field located after the parameter field)
-``pgaudit.log_statement`` (default: on)
-  Whether the audit logging should include the statement text and parameters
-``pgaudit.log_statement_once`` (default: off)
-  Whether the audit logging should include the statement text and parameters in the first log entry for a statement/ sub-statement combination (as opposed to including them in all the entries)
-``pgaudit.role``
-  Master role to use for an object audit logging
+    For information on all the parameters available for configuring the audit logging, see `Settings <https://github.com/pgaudit/pgaudit/tree/6afeae52d8e4569235bf6088e983d95ec26f13b7#readme>`_.
 
 Prerequisites
 '''''''''''''
@@ -197,6 +169,8 @@ To preview your audit logs in OpenSearch Dashboards, use the filtering tool by s
 .. note::
 
    If the index pattern in OpenSearch Dashboards had been configured before you enabled the service integration, the audit-specific AIVEN_AUDIT_FROM field is not available for filtering. Refresh the fields list for the index in OpenSearch Dashboards under **Stack Management** → **Index Patterns** → Your index pattern → **Refresh field list**.
+
+.. _disable-pgaudit:
 
 Disable the audit logging
 -------------------------

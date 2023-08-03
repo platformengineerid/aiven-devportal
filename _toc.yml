@@ -1065,6 +1065,8 @@ entries:
             title: TimescaleDB
           - file: docs/products/postgresql/concepts/upgrade-failover
             title: Upgrade and failover procedures
+          - file: docs/products/postgresql/concepts/pg-audit-logging
+            title: Audit logging
       - file: docs/products/postgresql/howto
         title: HowTo
         entries:
