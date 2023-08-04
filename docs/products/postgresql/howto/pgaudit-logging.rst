@@ -7,8 +7,8 @@ Collect audit logs in Aiven for PostgreSQL®
 
 Learn how to enable and configure the Aiven for PostgreSQL® audit logging feature on your Aiven for PostgreSQL service. Find out how to access and visualize your logs.
 
-About the audit logging
------------------------
+About audit logging
+-------------------
 
 The audit logging feature allows you to monitor and track activities within relational database systems, which helps to achieve the following:
   
@@ -24,8 +24,8 @@ The audit logging feature allows you to monitor and track activities within rela
 
    For more information on the PostgreSQL® audit logging feature, check out :doc:`PostgreSQL® audit logging </docs/products/postgresql/concepts/pg-audit-logging>`.
 
-Enable the audit logging
-------------------------
+Enable audit logging
+--------------------
 
 You can enable the audit logging by setting the ``pgaudit.featureEnabled`` parameter to ``true`` in your service's advanced configuration. You can do that using `Aiven Console <https://console.aiven.io>`_, `Aiven API <https://api.aiven.io/doc/>`_, or :doc:`Aiven CLI </docs/tools/cli>`.
 
@@ -82,8 +82,8 @@ Enable audit logs with Aiven API
 
          SELECT aiven_extras.set_pgaudit_parameter('log', 'defaultdb', 'all, -misc');
 
-Configure the audit logging
----------------------------
+Configure audit logging
+-----------------------
 
 You can configure the audit logging by setting different `audit logging parameters <https://github.com/pgaudit/pgaudit/tree/6afeae52d8e4569235bf6088e983d95ec26f13b7#readme>`_ to in your service's advanced configuration. You can do that using `Aiven Console <https://console.aiven.io>`_, `Aiven API <https://api.aiven.io/doc/>`_, or :doc:`Aiven CLI </docs/tools/cli>`.
 
@@ -172,8 +172,8 @@ To preview your audit logs in OpenSearch Dashboards, use the filtering tool by s
 
 .. _disable-pgaudit:
 
-Disable the audit logging
--------------------------
+Disable audit logging
+---------------------
 
 You can disable the audit logging on your database or service by setting the ``pgaudit.featureEnabled`` parameter to ``false`` in your service's advanced configuration. You can do that at any time using `Aiven Console <https://console.aiven.io>`_, `Aiven API <https://api.aiven.io/doc/>`_, or :doc:`Aiven CLI </docs/tools/cli>`.
 
