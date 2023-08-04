@@ -14,48 +14,48 @@ Discover the Aiven for PostgreSQL® audit logging feature and its capabilities. 
 About the audit logging
 -----------------------
 
-The audit logging feature allows monitoring and tracking activities within rellational database systems, which helps you cope with unauthorized access, data breaches, or fraudulent activities within databases ensuring data integrity and security. Using audit logs enables you to maintain compliance with regulations and standards set by a government or an industry. It can also be used as a tool to investigate and resolve data discrepancies, troubleshoot system errors, and optimize database performance. For more applications of the audit logging, checkout :ref:`Why use the audit logging <why-use-pgaudit>`.
+The audit logging feature allows you to monitor and track activities within rellational database systems, which helps you cope with unauthorized access, data breaches, or fraudulent activities ensuring data integrity and security. Using audit logs enables you to maintain compliance with regulations and standards set by a government or an industry. The audit logging is also a tool for investigating and resolving data discrepancies, troubleshooting system errors, and optimizing database performance. For more applications of the audit logging feature, check out :ref:`Why use the audit logging <why-use-pgaudit>`.
 
-If you use Aiven for PostgreSQL 11+ Pro Plan, and you have ``avnadmion`` superuser permissions, you can enable, configure, and disable the audit logging feature on the service level or the database level.
+If you use Aiven for PostgreSQL 11+ Pro Plan and have ``avnadmion`` superuser permissions, you can enable, configure, and use the audit logging feature on the service level or the database level.
 
 .. _why-use-pgaudit:
 
 Why use the audit logging
 -------------------------
 
-There are multiple reasons why you may want to use the audit logging:
+There are multiple reasons why you may want to use the audit logging. Note the following as benefits of using this feature:
 
 Data Security
-  Monitoring User Activities: Audit logs record all user interactions with databases and systems, allowing organizations to monitor and track user activities in real-time. This helps identify unusual or suspicious behavior, enabling prompt action to prevent potential security breaches.
-  Unauthorized Access Detection: By monitoring audit logs, organizations can detect unauthorized access attempts to critical data or systems. This provides an early warning system to thwart potential security threats.
-  Intrusion Detection: The audit logs aid in identifying intrusion attempts or unauthorized activities within the organization's IT environment, enabling security teams to respond quickly and mitigate risks effectively.
+  * Monitor user activities to identify unusual or suspicious behavior
+  * Detect unauthorized access attempts to critical data or systems
+  * Identify intrusion attempts or unauthorized activities within the organization's IT environment
 
 Compliance
-  Regulatory Compliance Evidence: Audit logs serve as crucial evidence during compliance audits, demonstrating that the organization meets industry-specific regulations and internal policies.
-  Data Privacy Compliance: Audit logging helps organizations comply with data privacy regulations by tracking access to sensitive data and ensuring proper data handling and privacy controls.
+  * Use audit logs as a regulatory compliance evidence to demonstrate that the organization meets industry or state regulations during audits
+  * Track access to sensitive data to comply with data privacy regulations
 
 Accountability
-  User Activity Tracking: The audit logging feature attributes specific actions to individual users, enabling accountability for their activities within the system.
-  Change Tracking: By maintaining a detailed record of changes made to databases and systems, audit logging holds users accountable for alterations or configurations that might impact data integrity or security.
+  * Have specific actions attributed to individual users to hold them accountable for their activities within the system
+  * Track changes to databases and systems to hold users accountable for alterations or configurations
 
-Operational Security
-  Security Monitoring and Analysis: Audit logs provide critical information for security monitoring and analysis, enabling proactive identification and resolution of security incidents.
-  Threat Detection and Response: By analyzing audit logs, organizations can detect and respond to potential security threats, minimizing the impact of security incidents.
+Operational security
+  * Monitor and analyze audit logs to proactively identify and resolve security incidents
+  * Analyze audit logs to detect and respond to potential security threats
 
-Incident Management and Root Cause Analysis (RCA)
-  Incident Investigation: Audit logs serve as a valuable source of information during incident investigations, providing a detailed trail of events leading up to the incident.
-  Root Cause Analysis: The audit logging feature aids in root cause analysis by providing data on actions and events that may have led to a security breach or incident.
+Incident management and root cause analysis
+  * Investigate an incident with audit logs as a detailed trail of events leading up to the incidents
+  * Analyze the root cause of an incident with audit logs providing data on actions and events that may have led to the incident
 
-System Performance Optimization
-  Performance Monitoring: Audit logs can be used for performance monitoring and analysis, allowing organizations to identify bottlenecks and optimize system performance.
-  Resource Utilization: By analyzing audit logs, organizations can assess resource utilization patterns and optimize system configurations for better performance.
+System performance optimization
+  * Monitor and analyze system performance to identify bottlenecks.
+  * Analyzing audit logs to assess resource utilization patterns and optimize the system configuration
 
-Data Recovery and Disaster Planning
-  Data Restoration: In the event of data loss or system failure, audit logs play a critical role in data recovery efforts, assisting in restoring data and operations.
-  Disaster Planning: Audit logs contribute to disaster planning strategies, enabling organizations to identify potential points of failure and enhance resilience.
+Data recovery and disaster planning
+  * Use audit logs for data restoration in case of data loss or system failure
+  * Analyze audit logs to improve system resilience and disaster planning strategies by identify potential points of failure
 
-Change Management and Version Control
-  Change Tracking: Audit logs keep a record of changes made to databases, software, and configurations, ensuring proper version control and tracking modifications during change management processes.
+Change management and version control
+  * Use audit logs to keep a record of changes made to databases, software, and configurations, ensuring a proper version control
 
 Use cases
 ---------
