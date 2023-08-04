@@ -154,7 +154,7 @@ You can also use :doc:`Aiven CLI </docs/tools/cli>` to create the service integr
 
 .. topic:: Results
 
-   After the service integration is set up and propagated to the service configuration, the logs are available in Aiven for OpenSearch. Each log record emitted by PGAudit is stored in Aiven for OpenSearch as a single message, which cannot be guaranteed for external integrations such as Remote Syslog.
+   After the service integration is set up and propagated to the service configuration, the logs are available in Aiven for OpenSearch. Each log record emitted by the audit logging is stored in Aiven for OpenSearch as a single message, which cannot be guaranteed for external integrations such as Remote Syslog.
 
 Visualize your logs
 -------------------

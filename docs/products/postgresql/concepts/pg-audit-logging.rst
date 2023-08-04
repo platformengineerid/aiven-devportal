@@ -11,17 +11,15 @@ Discover the Aiven for PostgreSQL® audit logging feature and its capabilities. 
 
    For information on how to enable the audit logging on your Aiven for PostgreSQL service and how to access and visualize your logs, check out :doc:`Collect audit logs in Aiven for PostgreSQL® </docs/products/postgresql/howto/pgaudit-logging>`.
 
-About the audit logging
------------------------
+About audit logging
+-------------------
 
 The audit logging feature allows you to monitor and track activities within rellational database systems, which helps you cope with unauthorized access, data breaches, or fraudulent activities ensuring data integrity and security. Using audit logs enables you to maintain compliance with regulations and standards set by a government or an industry. The audit logging is also a tool for investigating and resolving data discrepancies, troubleshooting system errors, and optimizing database performance. For more applications of the audit logging feature, check out :ref:`Why use the audit logging <why-use-pgaudit>`.
 
-If you use Aiven for PostgreSQL 11+ Pro Plan and have ``avnadmion`` superuser permissions, you can enable, configure, and use the audit logging feature on the service level or the database level.
-
 .. _why-use-pgaudit:
 
-Why use the audit logging
--------------------------
+Why use audit logging
+---------------------
 
 There are multiple reasons why you may want to use the audit logging. Note the following as benefits of using this feature:
 
@@ -62,25 +60,27 @@ Use cases
 
 Typically, capabilities of the audit logging feature are most appreciated by organizations or enterprises that value data security, integrity, and compliance. The audit logging has a wide range of applications in various industries:
 
-Finance and Banking
-  Financial institutions often use audit logging to ensure compliance with regulatory requirements, track financial transactions, and detect fraudulent activities.
+Finance and banking
+  Ensuring compliance with regulatory requirements, tracking financial transactions, and detecting fraudulent activities
 Healthcare
-  In the healthcare industry, audit logging is crucial for maintaining the confidentiality and integrity of patient records as well as complying with privacy regulations like HIPAA (Health Insurance Portability and Accountability Act).
-Government and Public Sector
-  Government agencies implement audit logging to track changes in critical systems, secure sensitive data, and meet legal and regulatory requirements.
-Information Technology (IT) and Software Companies
-  IT and software companies utilize audit logging to monitor access to their systems, track software changes, and identify potential security breaches.
-Retail and E-commerce
-  Companies in this industry use audit logging to track customer data, transactions, and inventory management to ensure data integrity and prevent unauthorized access.
+  Maintaining the confidentiality and integrity of patient records as well as complying with privacy regulations
+Government and public sector
+  Tracking changes in critical systems, secure sensitive data, and meet legal and regulatory requirements
+Information technology (IT) and software companies
+  Monitoring access to the systems, tracking software changes, and identifying potential security breaches
+Retail and e-commerce
+  Tracking customer data, transactions, and inventory management to ensure data integrity and prevent unauthorized access
 Manufacturing
-  Manufacturers often use audit logging to track changes to production processes, monitor equipment performance, and maintain data integrity for quality control.
+  Tracking changes to production processes, monitoring equipment performance, and maintaining data integrity for quality control
 Education
-  Educational institutions use audit logging to protect sensitive student data, track changes to academic records, and monitor system access for security purposes.
+  Protecting sensitive student data, tracking changes to academic records, and monitoring system access for security purposes
 
 How it works
 ------------
 
-To use the audit logging for your service (database) for collecting logs in Aiven for PostgreSQL, you need to :doc:`enable and configure this feature </docs/products/postgresql/howto/pgaudit-logging>` in `Aiven Console <https://console.aiven.io>`_ or using `Aiven API <https://api.aiven.io/doc/>`_ or :doc:`Aiven CLI </docs/tools/cli>`.
+You can enable, configure, and use the audit logging feature on the service level or the database level with Aiven for PostgreSQL 11+ Pro Plan as an ``avnadmin`` superuser.
+
+To use the audit logging on your service (database) for collecting logs in Aiven for PostgreSQL, you need to :doc:`enable and configure this feature </docs/products/postgresql/howto/pgaudit-logging>` in `Aiven Console <https://console.aiven.io>`_ or using `Aiven API <https://api.aiven.io/doc/>`_ or :doc:`Aiven CLI </docs/tools/cli>`.
 
 When enabled on your service, the audit logging can be configured so that it addresses your specific needs. There are a few `audit logging parameters <https://github.com/pgaudit/pgaudit/tree/6afeae52d8e4569235bf6088e983d95ec26f13b7#readme>`_ that you might want to configure for that purpose:
 
@@ -112,6 +112,8 @@ When enabled on your service, the audit logging can be configured so that it add
 .. topic:: Audit logging parameters
 
     For information on all the parameters available for configuring the audit logging, see `Settings <https://github.com/pgaudit/pgaudit/tree/6afeae52d8e4569235bf6088e983d95ec26f13b7#readme>`_.
+
+You can access the collected logs by :ref:`integrating with a service monitoring and analyzing logs, for example, Aiven for OpenSearch® <enable-log-integration>`. Finally, to visuaize your logs, you can use :doc:`OpenSearch Dashboards </docs/products/opensearch/dashboards>`.
 
 To disable the audit logging on your service (database), you can use `Aiven Console <https://console.aiven.io>`_, `Aiven API <https://api.aiven.io/doc/>`_, or :doc:`Aiven CLI </docs/tools/cli>` for :ref:`modifying your service's advanced configuration <disable-pgaudit>`. 
 
