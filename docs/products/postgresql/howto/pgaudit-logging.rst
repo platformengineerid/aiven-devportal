@@ -47,8 +47,30 @@ Enable audit logs in Aiven Console
 Enable audit logs with Aiven CLI
 ''''''''''''''''''''''''''''''''
 
+You can use the :doc:`Aiven CLI client </docs/tools/cli>` to interact with :doc:`the Aiven API </docs/tools/api>`. Run the :ref:`avn service update <avn-cli-service-update>` command to update your service by setting the ``pgaudit.featureEnabled`` parameter's value to ``true``.
+
+.. code-block:: bash
+
+   avn service update demo-pg        \
+     -c pgaudit.featureEnabled=true
+
 Enable audit logs with Aiven API
 ''''''''''''''''''''''''''''''''
+
+You can use the `curl` command line tool to interact with :doc:`the Aiven API </docs/tools/api>`. Use the `ServiceUpdate <https://api.aiven.io/doc/#tag/Service/operation/ServiceUpdate>`_ endpoint to update your service's configuration by setting the ``pgaudit.featureEnabled`` parameter's value to ``true``.
+
+.. code-block:: bash
+
+   curl --request PUT                                                                      \
+      --url https://api.aiven.io/v1/project/YOUR_PROJECT_NAME/service/YOUR_SERVICE_NAME    \
+      --header 'Authorization: Bearer YOUR_BEARER_TOKEN'                                   \
+      --header 'content-type: application/json'                                            \
+      --data
+         '{
+            "user_config": {
+               "pgaudit.featureEnabled": "true"
+            }
+         }'
 
 ..
    .. note::
